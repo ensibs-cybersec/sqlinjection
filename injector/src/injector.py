@@ -44,7 +44,7 @@ def data():
 	if request.args.has_key('securemode') and request.args['securemode'] == 'on':
             cursor.execute("SELECT * FROM individuals WHERE lastname = %s", (name,))
 	else:
-	    cursor.execute("SELECT * FROM individuals WHERE lastname = '" + name + "'")
+	    cursor.execute("SELECT * FROM individuals WHERE lastname = '%s'" % name)
 
         if cursor.rowcount > 0:
             return render_template('results.html', cursor=cursor)
