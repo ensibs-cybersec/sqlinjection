@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>SQL injection test application</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+	<div id="creating" class="col-sm-5">
+	    <form action="/init" method="post">
+		<button type="submit" class="btn btn-primary btn-lg">Initialize database</button>
+	    </form>
+	</div>
+	<div id="reporting" class="col-sm-5">
+	    <form action="/data" method="get">
+		<div class="form-group">
+                    <input type="text" class="form-control input-lg" placeholder="Enter a last name" name=restriction>Reference</input>
+		</div>
+		<button type="submit" class="btn btn-primary btn-lg">Retrieve corresponding persons</button>
+	    </form>
+	</div>
+    </div>
+</body>
+
+</html>

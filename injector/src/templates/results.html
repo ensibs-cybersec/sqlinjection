@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>SQL injection test application - Results</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+	<div id="results" class="col-sm-5">
+	    <ul>
+            {% for row in cursor %}
+                <li>{{ row[0] }} {{row[1]}}</li>
+            {% endfor %}
+            </ul>
+	</div>
+    </div>
+</body>
+
+</html>
