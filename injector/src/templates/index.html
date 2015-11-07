@@ -3,7 +3,7 @@
 
 <head>
     <title>SQL injection test application</title>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
 
 <body>
@@ -16,7 +16,8 @@
 	<div id="reporting" class="col-sm-5">
 	    <form action="/data" method="get">
 		<div class="form-group">
-                    <input type="text" class="form-control input-lg" placeholder="Enter a last name" name=restriction>Reference</input>
+                    <input type="text" class="form-control input-lg" name=restriction>Enter a last name</input>
+		    <input type="checkbox" class="form-control input-lg" name="securemode">Use parameterized queries</input>
 		</div>
 		<button type="submit" class="btn btn-primary btn-lg">Retrieve corresponding persons</button>
 	    </form>

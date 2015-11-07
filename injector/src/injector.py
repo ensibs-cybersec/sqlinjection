@@ -19,7 +19,7 @@ def init():
     try:
         conn = MySQLdb.connect (host = "mysql", user = "root", passwd = "Ensibs56")
         cursor = conn.cursor()
-        cursor.execute('DROP DATABASE test')
+        cursor.execute('DROP DATABASE IF EXISTS test')
         cursor.execute('CREATE DATABASE test')
         cursor.execute('USE test')
         cursor.execute('CREATE TABLE individuals (lastname varchar(50), firstname varchar(50))')
@@ -41,10 +41,11 @@ def data():
         cursor = conn.cursor()
         
         name = request.args['restriction']
-        query = "SELECT * FROM individuals WHERE lastname = '" + name + "'"
-        print query
+	if request.args.has_key('securemode') and request.args['securemode'] == 'on':
+            cursor.execute("SELECT * FROM individuals WHERE lastname = %s", (name,))
+	else:
+	    cursor.execute("SELECT * FROM individuals WHERE lastname = '" + name + "'")
 
-        cursor.execute(query)
         if cursor.rowcount > 0:
             return render_template('results.html', cursor=cursor)
         else:
